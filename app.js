@@ -3,9 +3,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const path = require("path") ;
+const { count } = require("console");
+const methodOverride = require("method-override");
 const app = express();
 
 const port = process.env.PORT || 8080;
+
+app.use(methodOverride('_method')); 
 
 main().then( ()=>{console.log("Mongoose connected")}).catch(err => console.log(err));
 
@@ -68,4 +72,52 @@ app.post("/listing" ,async(req,res)=>{
     const newList = new Listing(incomingdata);
     await newList.save()
     res.redirect("/listing")
+})
+
+// edit route 
+
+app.get("/listing/edit/:id",async (req,res)=>{
+    let {id} = req.params;
+    let nlisting = await Listing.findById(id);
+
+    if(!nlisting){
+        return res.status(404).send("Data not found");
+    }
+    res.render("listing/edit.ejs", { nlisting });
+
+});
+
+app.put("/listing/edit/:id" ,   async(req,res)=>{
+    
+    try{
+        let {id} = req.params;
+        let {title , description , price , location , country} = req.body;
+
+        //const updatedata = await Listing.findByIdAndUpdate(id,{title : title},{description : description} , {price : price} , {location : location} , {country : country} ,  { new: true, runValidators: true });
+
+          const updatedata = await Listing.findByIdAndUpdate(
+            id,
+            { title, description, price, location, country }, // Combined into one object
+            { new: true, runValidators: true }
+        );
+
+
+        console.log("Updated Listing:", updatedata);
+        res.redirect("/listing");
+
+    }catch (err) {
+        console.log("Error updating Listing:", err);
+        res.redirect("/listing");
+    }
+})
+
+app.delete("/listing/:id",async(req,res)=>{
+    try{
+        let {id} = req.params;
+    await Listing.findByIdAndDelete(id);
+    console.log("Deleted Successfully");}
+    catch(e){
+         console.log("Error deleting chat:", e);
+    }
+    res.redirect("/listing");
 })

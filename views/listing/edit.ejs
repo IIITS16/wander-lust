@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit-Data <%= nlisting._id %></title>
+</head>
+<body>
+    <h3>Editing Data <%= nlisting._id %></h3>
+
+    <form action="/listing/edit/<%= nlisting._id %>?_method=PUT" method="POST">
+        <input type="text" name="title" value="<%=nlisting.title %>"><br><br>
+        <input type="text" name="description" value="<%=nlisting.description %>"><br><br>
+        <input type="number" name="price" value="<%=nlisting.price %>"><br><br>
+        <input type="text" name="location" value="<%=nlisting.location %>"><br><br>
+        <input type="text" name="country" value="<%=nlisting.country %>"><br><br>
+
+        <button>Submit</button>
+
+    </form>
+</body>
+</html>

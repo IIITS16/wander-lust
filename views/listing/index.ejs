@@ -12,10 +12,19 @@
     </form>
 <ul>
     <% for(let l of allListing){ %>
-        <li><a href="/listing/<%= l._id %>"><%= l.title %></a></li>
+        <li>
+            <a href="/listing/<%= l._id %>"><%= l.title %></a> — 
+            <a href="/listing/edit/<%= l._id %>">edit</a> — 
+            <form action="/listing/<%= l._id %>?_method=DELETE" method="POST" style="display:inline;">
+                <button type="submit" class="btn-delete" onclick="return confirm('Are you sure you want to delete this listing?');">
+                Delete
+                </button>
+            </form>
+        </li>
         <br>
     <% } %>
 </ul>
+
 
 </body>
 </html>
