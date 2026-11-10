@@ -13,6 +13,10 @@ async function main() {
   await mongoose.connect('mongodb://127.0.0.1:27017/wander-lust');
 }
 
+app.set("view engine","ejs");   
+app.set("views" , path.join(__dirname,"views"));
+app.use(express.urlencoded({extended : true}));
+
 app.listen(port ,()=>{
     console.log("Server is listening");
 });
@@ -37,7 +41,31 @@ app.get("/",(req,res)=>{
 //     res.send("Successfully");
 // })
 
-app.get("/Listing" , (req,res) => {
-    const allListing = Listing.find({});
-    res.render("index.ejs" , {allListing});
+// Index Route
+app.get("/Listing" , async (req,res) => {
+    const allListing = await Listing.find({});
+    res.render("listing/index.ejs" , {allListing});
+})
+
+// Create
+app.get("/Listing/new", (req,res) => {
+    res.render("listing/newform.ejs");
+})
+
+// Show data Route
+
+app.get("/Listing/:id" , async(req,res) => {
+    let {id} = req.params;
+    let currdata = await Listing.findById(id);
+    res.render("listing/show.ejs",{currdata});
+})
+
+// Crete request
+app.post("/listing" ,async(req,res)=>{
+    //let {title,description,image,price,location,country} = req.body;
+
+    let incomingdata = req.body.incdata;
+    const newList = new Listing(incomingdata);
+    await newList.save()
+    res.redirect("/listing")
 })
