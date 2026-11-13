@@ -1,0 +1,55 @@
+/* body {
+  background-color: #d8ded2;
+} */
+
+.navbar{
+  height : 5rem ;
+  /* position: fixed; */
+}
+
+.fa-compass{
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+.nav-link{
+  color: #222222 !important;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-links , .f-info-socials {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+  color: #222222;
+}
+
+.f-info {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #ebebeb;
+  height: 8rem;
+  justify-content: centre;
+  align-items: space-evenly ;
+}
+
+
+.op {
+  width: 100%;                   /* 3. Sirf ye line add ki */
+  text-align: center;
+}
+
+.f-info-socials i{
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}

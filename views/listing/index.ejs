@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WanderLust</title>
-</head>
+
+<% layout("layouts/boilerplate") %>
+
 <body>
     <h3>All Listings</h3>
-    <form method="GET" action="/Listing/new">
-        <button>Create New List</button>
-    </form>
+    <!-- <form method="GET" action="/Listing/new">
+        <button>Create New List</button> -->
+    <!-- </form> -->
 <ul>
     <% for(let l of allListing){ %>
         <li>
@@ -27,4 +23,3 @@
 
 
 </body>
-</html>
