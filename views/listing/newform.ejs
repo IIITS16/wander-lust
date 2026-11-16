@@ -1,19 +1,73 @@
 <% layout("layouts/boilerplate") %>
-<body>
-    <h3>Create a New Listing</h3>
-    <form action="/Listing" method="POST">
-        <input type="text" name="incdata[title]" placeholder="Enter Title">
-        <br><br>
-        <input type="text" name="incdata[description]" placeholder="Enter description">
-        <br>
-        <br>
-        <input type="number" name="incdata[price]" placeholder="Enter price">
-        <br><br>
-        <input type="text" name="incdata[location]" placeholder="Enter location">
-        <br><br>
-        <input type="text" name="incdata[country]" placeholder="Enter country">
-        <br><br>        
 
-        <button>submit</button>
-    </form>
-</body>
+<div class="row mt-4">
+    <div class="col-8 offset-2">
+
+        <h3 class="mb-4">Create a New Listing</h3>
+
+        <form action="/Listing" method="POST">
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input
+                    type="text"
+                    name="incdata[title]"
+                    placeholder="Enter Catchy Title"
+                    class="form-control"
+                    required
+                >
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                    name="incdata[description]"
+                    placeholder="Describe your property"
+                    class="form-control"
+                    rows="4"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="row">
+
+                <div class="mb-3 col-md-4">
+                    <label for="price" class="form-label">Price</label>
+                    <input
+                        type="number"
+                        name="incdata[price]"
+                        placeholder="1200"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+                <div class="mb-3 col-md-8">
+                    <label for="country" class="form-label">Country</label>
+                    <input
+                        type="text"
+                        name="incdata[country]"
+                        placeholder="India"
+                        class="form-control"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input
+                    type="text"
+                    name="incdata[location]"
+                    placeholder="Jaipur"
+                    class="form-control"
+                    required
+                >
+            </div>
+
+            <button class="btn btn-dark mt-2 add-btn">Add</button>
+
+        </form>
+    </div>
+</div>

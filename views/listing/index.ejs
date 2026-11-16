@@ -6,6 +6,31 @@
     <!-- <form method="GET" action="/Listing/new">
         <button>Create New List</button> -->
     <!-- </form> -->
+
+<!-- Card -->
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 ">
+
+     <% for(let l of allListing){ %>
+        <a href="/Listing/<%= l._id %>" class="listing-link">
+            <div class="card col" style="width: 20rem;">
+                <img class="card-img-top" src="<%= l.image %>" alt="Listing_image" style = "height: 20rem ">
+                <div class="card-img-overlay"></div>
+
+                <div class="card-body">
+                <p class="card-text">
+                    <b><%= l.title %> </b><br>
+                    &#8377 <%= l.price %> / night
+                </p>
+                </div>
+            </div>
+    <% } %>
+</a>
+
+</div>
+
+
+
 <ul>
     <% for(let l of allListing){ %>
         <li>
