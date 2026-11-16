@@ -1,18 +1,71 @@
 <% layout("layouts/boilerplate") %>
 
-    <title>Edit-Data <%= nlisting._id %></title>
+<div class="row mt-4">
+    <div class="col-8 offset-2">
 
-<body>
-    <h3>Editing Data <%= nlisting._id %></h3>
+        <h3 class="mb-4">Edit Listing : <%= nlisting._id %></h3>
 
-    <form action="/listing/edit/<%= nlisting._id %>?_method=PUT" method="POST">
-        <input type="text" name="title" value="<%=nlisting.title %>"><br><br>
-        <input type="text" name="description" value="<%=nlisting.description %>"><br><br>
-        <input type="number" name="price" value="<%=nlisting.price %>"><br><br>
-        <input type="text" name="location" value="<%=nlisting.location %>"><br><br>
-        <input type="text" name="country" value="<%=nlisting.country %>"><br><br>
+        <form action="/listing/edit/<%= nlisting._id %>?_method=PUT" method="POST">
 
-        <button>Submit</button>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input
+                    type="text"
+                    name="title"
+                    value="<%= nlisting.title %>"
+                    class="form-control"
+                >
+            </div>
 
-    </form>
-</body>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea
+                    name="description"
+                    class="form-control"
+                    rows="4"
+                ><%= nlisting.description %></textarea>
+            </div>
+
+            <!-- Price and Country In a single Row  -->
+
+            <div class="row">
+           
+                <div class="mb-3 col-md-4">
+                <label for="price" class="form-label">Price</label>
+                <input
+                    type="number"
+                    name="price"
+                    value="<%= nlisting.price %>"
+                    class="form-control"
+                >
+                </div>
+
+                <div class="mb-3 col-md-8">
+                <label for="country" class="form-label">Country</label>
+                <input
+                    type="text"
+                    name="country"
+                    value="<%= nlisting.country %>"
+                    class="form-control"
+                >
+                </div>
+
+            
+            </div>
+
+            <div class="mb-3">
+                <label for="location" class="form-label">Location</label>
+                <input
+                    type="text"
+                    name="location"
+                    value="<%= nlisting.location %>"
+                    class="form-control"
+                >
+            </div>
+
+            <button class="btn btn-dark edit-btn mt-3">Edit</button>
+
+        </form>
+
+    </div>
+</div>

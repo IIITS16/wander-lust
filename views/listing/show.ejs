@@ -10,4 +10,13 @@
         <li><%= currdata.location %></li>
         <li><%= currdata.country %></li>
     </ul>
+    <a href="/listing/edit/<%= currdata._id %>">Edit</a>
+    <br>
+
+    <form action="/listing/<%= currdata._id %>?_method=DELETE"
+      method="POST"
+      onsubmit="return confirm('Are you sure you want to delete this listing?')">
+    <button class="btn btn-danger">Delete</button>
+</form>
+
 </body>
