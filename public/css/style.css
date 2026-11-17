@@ -105,3 +105,30 @@ body {
   background-color: #fe424d;
   border: none;
 }
+.show-img {
+    height: 30vh;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.card {
+    border: none !important;
+    padding: 0 !important;
+}
+
+.card-body {
+    padding: 10px 0 !important;
+}
+
+.card-text {
+    font-size: 1rem;
+}
+
+.btn-danger {
+    background-color: #fe424d !important;
+    border: none !important;
+}
+
+.btn-dark {
+    margin-left: 12px;
+}

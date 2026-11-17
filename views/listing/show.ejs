@@ -1,22 +1,38 @@
-<% layout("layouts/boilerplate") %>
-    <title><%= currdata.title %></title>
-</head>
-<body>
-    <h3>Listing Details : </h3>
-    <ul>
-        <li><%= currdata.title %></li>
-        <li><%= currdata.description %></li>
-        <li>&#8377 <%= currdata.price.toLocaleString('en-IN') %></li>
-        <li><%= currdata.location %></li>
-        <li><%= currdata.country %></li>
-    </ul>
-    <a href="/listing/edit/<%= currdata._id %>">Edit</a>
-    <br>
 
-    <form action="/listing/<%= currdata._id %>?_method=DELETE"
-      method="POST"
-      onsubmit="return confirm('Are you sure you want to delete this listing?')">
-    <button class="btn btn-danger">Delete</button>
-</form>
+<% layout("/layouts/boilerplate") %>
 
-</body>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <h3>Listing Details</h3>
+    </div>
+
+    <div class="card col-6 offset-2">
+        <img
+            src="<%= currdata.image %>"
+            class="card-img-top show-img"
+            alt="listing_image"
+        >
+
+        <div class="card-body">
+            <p class="card-text">
+                <b><%= currdata.title %></b> <br>
+                <%= currdata.description %> <br>
+                &#8377; <%= currdata.price.toLocaleString("en-IN") %> <br>
+                <%= currdata.location %> <br>
+                <%= currdata.country %>
+            </p>
+        </div>
+    </div>
+
+    <div class="col-8 offset-2 mt-3">
+        <a href="/listing/edit/<%= currdata._id %>" class="btn btn-danger">Edit</a>
+
+        <form action="/listing/<%= currdata._id %>?_method=DELETE"
+              method="POST"
+              class="d-inline"
+              onsubmit="return confirm('Are you sure you want to delete this listing?')">
+
+            <button class="btn btn-dark">Delete</button>
+        </form>
+    </div>
+</div>
